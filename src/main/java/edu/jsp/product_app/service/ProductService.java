@@ -101,4 +101,11 @@ public class ProductService {
 		return productRepository.findByBrand(brand);
 	}
 
+	public List<Product> findByprice(double st,double end ){
+		return productRepository.findByPriceBetween(st, end);
+	}
+	
+	public List<Product> fetchByRating(double st,double end ){
+		return productRepository.fetchByRatingBetween(st, end);
+	}
 }
