@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.jsp.product_app.entity.Product;
 
@@ -38,6 +40,20 @@ public class ProductController {
 	@DeleteMapping("/deleteById/{id}")
 	public String deleteById(@PathVariable int id) {
 		return productservice.deleteById(id);
+	}
+	
+	@PutMapping("/update/{id}")
+	public Product updateProduct(@PathVariable int id ,@RequestBody Product newPrd ) {
+		return productservice.updateProduct(id, newPrd);
+	}
+	
+	@PutMapping("/updateimage/{id}")
+	public Product updateProduct(@PathVariable int id , @RequestBody MultipartFile file) throws Exception{
+		return productservice.updateProduct(id, file);
+	}
+	@GetMapping("/findbybrand/{brand}")
+	public List<Product> findByBrand(@PathVariable String brand) {
+		return productservice.findByBrand(brand);
 	}
 
 }

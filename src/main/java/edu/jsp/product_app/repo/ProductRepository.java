@@ -1,5 +1,7 @@
 package edu.jsp.product_app.repo;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import edu.jsp.product_app.entity.Product;
@@ -13,4 +15,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 //	3-------- findAll()
 //	4--------delete(product t )
 //	5--------deleteById(Integer id)
+	
+	List<Product> findByBrand(String brand);
 }
